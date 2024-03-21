@@ -3,7 +3,7 @@ import { db } from '@/db';
 
 type SnippetShowPageProps = {
   params: {
-    id: string;
+    snippetId: string;
   };
 };
 
@@ -12,9 +12,11 @@ export default async function SnippetShowPage({
 }: SnippetShowPageProps) {
   console.log(params);
 
+  await new Promise((r) => setTimeout(r, 2000));
+
   const snippet = await db.snippet.findFirst({
     where: {
-      id: +params.id,
+      id: +params.snippetId,
     },
   });
 
