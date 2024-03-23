@@ -12,7 +12,7 @@ export default async function SnippetShowPage({
 }: SnippetShowPageProps) {
   console.log(params);
 
-  await new Promise((r) => setTimeout(r, 2000));
+  await new Promise((r) => setTimeout(r, 1000));
 
   const snippet = await db.snippet.findFirst({
     where: {
