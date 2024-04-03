@@ -21,7 +21,7 @@ export default function SnippetCreatePage() {
 
     //Redirect the user back to the root route
     redirect('/');
-  } //this is server action
+  } //this is a server action
 
   return (
     <form action={createSnippet}>
