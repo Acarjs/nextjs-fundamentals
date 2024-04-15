@@ -28,23 +28,31 @@ export async function createSnippet(
   formState: formStateProps,
   formData: FormData
 ) {
-  return {
-    message: 'Title must be longer',
-  };
+  //check the user's inputs and make sure they're valid.
+  const title = formData.get('title');
+  const code = formData.get('code');
 
-  // //Check the user's inputs and make sure they're valid
-  // const title = formData.get('title') as string;
-  // const code = formData.get('code') as string;
+  if (typeof title !== 'string' || title.length < 3) {
+    return {
+      message: 'Please enter a valid title',
+    }; //we must retunr the same type as whatever that initial state type was that we passed in to our hook.
+  }
 
-  // //Create a new record in the database
-  // const snippet = await db.snippet.create({
-  //   data: {
-  //     title: title,
-  //     code: code,
-  //   },
-  // });
-  // console.log(snippet);
+  if (typeof code !== 'string' || code.length < 3) {
+    return {
+      message: 'Please enter a valid code',
+    };
+  }
 
-  // //Redirect the user back to the root route
-  // redirect('/');
+  //create a new record in the database;
+  const snippet = await db.snippet.create({
+    data: {
+      title: title,
+      code: code,
+    },
+  });
+  console.log(snippet);
+
+  //redirect the usere back to the root route
+  redirect('/');
 } //this is a server action
