@@ -53,6 +53,8 @@ export async function createSnippet(
       },
     });
     console.log(snippet);
+
+    // throw new Error('Hey!');
   } catch (err: unknown) {
     if (err instanceof Error) {
       return {
