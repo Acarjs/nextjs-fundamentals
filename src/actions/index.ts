@@ -1,5 +1,6 @@
 'use server';
 
+import { revalidatePath } from 'next/cache'; //on-demand caching control
 import { db } from '@/db';
 import { redirect } from 'next/navigation';
 
@@ -17,6 +18,7 @@ export async function deleteSnippet(id: number) {
     where: { id },
   });
 
+  revalidatePath('/');
   redirect('/');
 }
 
@@ -66,6 +68,8 @@ export async function createSnippet(
       };
     }
   }
+
+  revalidatePath('/');
 
   //redirect the user back to the root route
   redirect('/');

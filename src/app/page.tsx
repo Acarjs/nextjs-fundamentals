@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { db } from '@/db';
 
+// export const dynamic = 'force-dynamic'; //to make this page dynamic. This one will completely caching on the page.
+
 export default async function Home() {
   const snippets = await db.snippet.findMany();
 
