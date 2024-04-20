@@ -1,6 +1,6 @@
 'use server';
 
-import { revalidatePath } from 'next/cache'; //on-demand caching control
+import { revalidatePath } from 'next/cache'; //on-demand caching controls
 import { db } from '@/db';
 import { redirect } from 'next/navigation';
 
@@ -10,6 +10,7 @@ export async function editSnippet(id: number, code: string) {
     data: { code },
   });
 
+  revalidatePath(`/snippets/${id}`);
   redirect(`/snippets/${id}`);
 }
 
