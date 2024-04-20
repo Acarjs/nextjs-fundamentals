@@ -57,7 +57,7 @@ export async function generateStaticParams() {
 
   return snippets.map((snippet) => {
     return {
-      id: snippet.id.toString(),
+      id: snippet.id.toString(), //next expect that these are strings.
     };
   });
 } //by doing this we are using caches for /snippets/id paths.
